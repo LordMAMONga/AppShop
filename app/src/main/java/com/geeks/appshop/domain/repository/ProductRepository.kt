@@ -1,5 +1,6 @@
 package com.geeks.appshop.domain.repository
 
+
 import com.geeks.appshop.domain.model.Product
 
 interface ProductRepository {

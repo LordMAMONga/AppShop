@@ -13,13 +13,9 @@ fun ProductDto.toDomain(): Product {
         description = this.description ?: "",
         category = this.category ?: "",
         image = this.image ?: "",
-        rating = this.rating?.toDomain() ?: Rating.empty()
-    )
-}
-
-fun RatingDto.toDomain(): Rating {
-    return Rating(
-        rate = this.rate ?: 0.0,
-        count = this.count ?: 0
+        rating = Rating(
+            this.rating?.rate ?: 0.0,
+            this.rating?.count ?: 0
+        )
     )
 }
