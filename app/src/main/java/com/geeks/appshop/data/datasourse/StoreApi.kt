@@ -10,7 +10,7 @@ interface StoreApi {
     @GET("products")
     suspend fun getAllProducts(): List<ProductDto>
 
-    @GET("product/{id}")
+    @GET("products/{id}")
     suspend fun getProductById(@Path("id") id: Int): ProductDto
 
 }

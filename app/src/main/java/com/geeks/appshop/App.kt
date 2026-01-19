@@ -3,6 +3,7 @@ package com.geeks.appshop
 import android.app.Application
 import com.geeks.appshop.data.di.dataModule
 import com.geeks.appshop.domain.di.domainModule
+import com.geeks.appshop.ui.di.uiModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -19,7 +20,8 @@ class App : Application() {
 
             modules(
                 dataModule,
-                domainModule
+                domainModule,
+                uiModule
             )
 
         }

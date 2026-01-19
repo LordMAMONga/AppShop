@@ -34,10 +34,12 @@ val dataModule = module {
 
     single {
         OkHttpClient.Builder().addInterceptor(get<Interceptor>(named("Logging")))
+            .build()
     }
 
     single {
         Retrofit.Builder()
+            .baseUrl(BASE_URL)
             .addConverterFactory(get())
             .client(get())
             .build()

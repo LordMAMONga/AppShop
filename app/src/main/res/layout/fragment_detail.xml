@@ -6,13 +6,23 @@
     android:padding="16dp">
 
     <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_margin="8dp"
+        android:src="@drawable/outline_arrow_top_left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
         android:id="@+id/img_detail"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:src="@drawable/ic_launcher_background"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/btn_back" />
 
     <TextView
         android:id="@+id/tv_detail_title"
