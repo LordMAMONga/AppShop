@@ -3,6 +3,7 @@ package com.geeks.appshop.ui.fragments.product
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.geeks.appshop.domain.model.Product
+import com.geeks.appshop.domain.usecases.AddToCartUseCase
 import com.geeks.appshop.domain.usecases.GetProductsUseCase
 import com.geeks.appshop.ui.models.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -11,6 +12,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class ListViewModel(
+    private val addToCartUseCase: AddToCartUseCase,
     private val getProductsUseCase: GetProductsUseCase
 ) : ViewModel() {
 
@@ -34,6 +36,11 @@ class ListViewModel(
             } catch (e: Exception) {
                 _state.value = UiState.Error(e.message ?: "Error")
             }
+        }
+    }
+    fun addToCart(product: Product) {
+        viewModelScope.launch {
+            addToCartUseCase(product)
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.geeks.appshop.ui.fragments.product
 
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,12 +15,15 @@ class ProductListFragment : BaseFragment<FragmentListBinding, ListViewModel>(
 ) {
 
     override val viewModel: ListViewModel by viewModel()
-    private val adapter = ProductAdapter { product ->
+    private val adapter = ProductAdapter( { product ->
         val action = ProductListFragmentDirections.actionProductListFragmentToDetailFragment()
             .setProductId(product.id)
-
         findNavController().navigate(action)
-    }
+    },
+        onBuyClick = { product ->
+            viewModel.addToCart(product)
+            Toast.makeText(context, "Добавлено!", Toast.LENGTH_SHORT).show()
+        })
 
     override fun onBind(binding: FragmentListBinding) {
         setupRecycler()
@@ -39,6 +43,11 @@ class ProductListFragment : BaseFragment<FragmentListBinding, ListViewModel>(
                 binding.rvProductList.isVisible = false
             }
         )
+
+        binding.btnCart.setOnClickListener {
+            val action = ProductListFragmentDirections.actionProductListFragmentToCartFragment()
+            findNavController().navigate(action)
+        }
     }
 
     private fun setupRecycler() {

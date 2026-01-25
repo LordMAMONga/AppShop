@@ -1,7 +1,9 @@
 package com.geeks.appshop.data.di
 
 import com.geeks.appshop.data.datasourse.StoreApi
+import com.geeks.appshop.data.repository.CartRepositoryImpl
 import com.geeks.appshop.data.repository.ProductRepositoryImpl
+import com.geeks.appshop.domain.repository.CartRepository
 import com.geeks.appshop.domain.repository.ProductRepository
 import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
@@ -47,4 +49,5 @@ val dataModule = module {
     }
 
     single<ProductRepository> { ProductRepositoryImpl(get()) }
+    single<CartRepository>{ CartRepositoryImpl(get()) }
 }
